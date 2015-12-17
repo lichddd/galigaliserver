@@ -6,7 +6,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
-var jsonp = require('./routes/jsonp');
+var users = require('./routes/users');
+var jsonp = require('./routes/Jsonp');
+
 var app = express();
 
 // view engine setup
@@ -22,8 +24,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
+app.use('/users', users);
 app.use('/jsonp', jsonp);
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
